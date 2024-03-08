@@ -19,43 +19,42 @@ import com.example.demo.dto.WeatherDTO;
 public class HomeController {
 
 	@Autowired
-	RestTemplate restTemplate;
+	private RestTemplate restTemplate;
 	
 	
 	@GetMapping("/forecast")
     public ResponseEntity<String> getForecast(@RequestBody WeatherDTO weatherDTO) throws Exception {
-    	String apiKey = weatherDTO.getxRapidKey();
-    	String apiHost = weatherDTO.getRapidHost();
-    	String city = weatherDTO.getCity();
-    	
-    	String url = "https://forecast9.p.rapidapi.com/rapidapi/forecast/"+city+"/summary/";
+		
+    	String url = "https://forecast9.p.rapidapi.com/rapidapi/forecast/"+weatherDTO.getCity()+"/summary/";
     	try {
-    	HttpHeaders headers = new HttpHeaders();
-    	headers.set("X-RapidAPI-Key",apiKey);
-    	headers.set("X-RapidAPI-Host", apiHost);
-    	ResponseEntity<String> response = restTemplate.exchange(url, HttpMethod.GET, new HttpEntity<>(headers),String.class);
+    		
+    		HttpHeaders headers = new HttpHeaders();
+    		headers.set("X-RapidAPI-Key",weatherDTO.getxRapidKey());
+    		headers.set("X-RapidAPI-Host", weatherDTO.getRapidHost());
+    		ResponseEntity<String> response = restTemplate.exchange(url, HttpMethod.GET, new HttpEntity<>(headers),String.class);
     	
-    	return response;
+    		return response;
     	}catch (Exception e) {
+    		
     		throw new Exception();
     	}
     }
 	
 	@GetMapping("/hourlyforecast")
 	public ResponseEntity<String> getHourlyForeCast(@RequestBody WeatherDTO weatherDTO) throws Exception{
-		String apiKey = weatherDTO.getxRapidKey();
-    	String apiHost = weatherDTO.getRapidHost();
-    	String city = weatherDTO.getCity();
     	
-    	String url = "https://forecast9.p.rapidapi.com/rapidapi/forecast/"+city+"/hourly/";
+    	String url = "https://forecast9.p.rapidapi.com/rapidapi/forecast/"+weatherDTO.getCity()+"/hourly/";
+    	
     	try {
-    	HttpHeaders headers = new HttpHeaders();
-    	headers.set("X-RapidAPI-Key",apiKey);
-    	headers.set("X-RapidAPI-Host", apiHost);
-    	ResponseEntity<String> response = restTemplate.exchange(url, HttpMethod.GET, new HttpEntity<>(headers),String.class);
+    		
+    		HttpHeaders headers = new HttpHeaders();
+    		headers.set("X-RapidAPI-Key",weatherDTO.getxRapidKey());
+    		headers.set("X-RapidAPI-Host", weatherDTO.getRapidHost());
+    		ResponseEntity<String> response = restTemplate.exchange(url, HttpMethod.GET, new HttpEntity<>(headers),String.class);
     	
-    	return response;
+    		return response;
     	} catch (Exception e) {
+    		
     		throw new Exception();
     	}
 	}
