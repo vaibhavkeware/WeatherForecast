@@ -23,6 +23,11 @@ Implementated points -
        * Body -> { "city"     : your input,
                    "xRapidKey": your input,
                    "rapidHost": your input }
+        
+       Example -> { "city":"Delhi",
+                    "xRapidKey":"8c12d231cbmshdbf24d597425000p1612c3jsn773152374a53",
+                    "rapidHost":"forecast9.p.rapidapi.com"} 
+       (The above body can be used as it is)     
 
 
  3] Rapid API to get hourly Weather forecast details of Any city using API
@@ -35,5 +40,5 @@ Implementated points -
        * Body -> { "city"     : your input,
                    "xRapidKey": your input,
                    "rapidHost": your input }
-
+      (To use this API user need subscription. We need "xRpidKey" and "rapidHost" of subscribed user)
                         
